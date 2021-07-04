@@ -6,6 +6,7 @@ class Car {
 		this.brand = brand;
 		this.wheel = wheel;
 		this.wd_type = wd_type;
+
 		
 	}
 	
@@ -38,16 +39,23 @@ Car.prototype.shoot = function(arg) {
 Car.prototype.fuel_type = function (arg) {
 	console.log("fuel type:" , arg);
 }
+//add prototype instalcce method
+Car.prototype.self_drive = function (arg=true) {
+	console.log("can self driving: ", arg);
+
+}
+
 
 // Tesla Brand
-
-const Tesla = new Car("Tesla", 4, "Solar Sun");
+const Tesla = new Car("Tesla", 4, "Solar Sun", true);
+console.log(Tesla); //result:  Car { brand: 'Tesla', wheel: 4, wd_type: 'Solar Sun' }
 Tesla.brand_name();
 Tesla.num_of_wheel();
 Tesla.typeof_wd(4);
 Tesla.can_fly();
 Tesla.shoot(true);
 Tesla.fuel_type(["Baterry", "Sun"]);
+Tesla.self_drive(false);
 // is this Car class ??
 console.log("Car class ??", Tesla instanceof(Car));
 console.log("\n")
@@ -62,13 +70,16 @@ class Truck extends Car {
 		this.container = container;
 		this.sleep_deck = sleep_deck;
 	}
+	//inherited from Car class
 	brand_name() {
 		super.brand_name();
 		// this.brand = data;;
 	}
+	//inherited from Car class
 	num_of_wheel() {
 		super.num_of_wheel();
 	}
+	//inherited from Car class
 	typeof_wd(data) {
 		super.typeof_wd(data);
 	}
@@ -90,9 +101,11 @@ const Hinno = new Truck("Hinno", 9);
 Hinno.brand_name();
 Hinno.num_of_wheel();
 Hinno.typeof_wd(6);
-Hinno.fuel_type("Solar");
+
+Hinno.fuel_type("Solar"); //inherited from "prototype" Car class
 Hinno.have_container(true);
 Hinno.have_sleep_deck(false);
+Hinno.self_drive(false); //inherited from "prototype" Car class
 console.log("Truck Class: ", Hinno instanceof(Truck));
 console.log("\n");
 
@@ -104,12 +117,15 @@ class Taxi extends Car {
 		this.rent = rent;
 		this.num_passanger = num_passanger;
 	}
+	//inherited from Car class
 	brand_name() {
 		super.brand_name();
 	}
+	//inherited from Car class
 	num_of_wheel() {
 		super.num_of_wheel();
 	}
+	//inherited from Car class
 	typeof_wd(data) {
 		super.typeof_wd(data);
 	}
@@ -131,7 +147,11 @@ blue_bird.num_of_wheel();
 blue_bird.typeof_wd(4);
 blue_bird.rent_car(true);
 blue_bird.possible_passanger(3);
-blue_bird.fuel_type("Pertalite");
+
+blue_bird.fuel_type("Pertalite"); //inherited from "prototype" Car class
+blue_bird.self_drive(false);
+blue_bird.shoot(true);
+
 
 
 
